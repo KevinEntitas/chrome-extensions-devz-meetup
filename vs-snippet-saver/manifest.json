@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "DevZ VS Code Snipper Saver",
+  "version": "1.0.0",
+  "description": "DevZ meeting demo extension",
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "storage",
+    "nativeMessaging"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

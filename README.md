@@ -1,0 +1,2 @@
+VS Code snippets - `/Users/kevinbogdan/Library/Application Support/Code/User/snippets/javascript.json`
+Native messaging hosts - `/Users/kevinbogdan/Library/'Application Support'/Google/Chrome/NativeMessagingHosts/`

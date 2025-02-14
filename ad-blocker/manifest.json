@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "DevZ Ad Blocker",
+  "version": "1.0.0",
+  "description": "DevZ meeting demo extension",
+  "permissions": [
+    "declarativeNetRequestFeedback",
+    "declarativeNetRequest"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "block_rule",
+        "enabled": true,
+        "path": "rule_1.json"
+      }
+    ]
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

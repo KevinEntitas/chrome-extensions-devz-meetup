@@ -1,0 +1,9 @@
+{
+  "name": "com.snippetsaver.host",
+  "description": "Native Messaging Host for Snippet Saver",
+  "path": "/Users/kevinbogdan/dev/chrome-extension/devz-demo/vs-snippet-saver/native/host",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://ambbglkkdfgjfepgjofbjjgcpgokoohb/"
+  ]
+}

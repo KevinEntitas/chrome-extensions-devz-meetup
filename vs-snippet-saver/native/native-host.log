@@ -1,0 +1,204 @@
+2025-02-14T08:07:00.593Z: Started host...
+2025-02-14T08:07:00.594Z: Received message {"title":"sleep promise","desc":"Method to behave like sleep","prefix":"sleepDevz","content":"function sleep(ms) {   return new Promise((resolve) => {     setTimeout(resolve, ms);   }); }"}
+2025-02-14T08:07:00.595Z: {
+	// Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Fresh React Structure": {
+		"prefix": ["crud-service"],
+		"body": [
+            "import { Service } from "geonix";
+            import { Permission, filterPermissionsInternalData } from "../../lib/Permission.js";
+            import { AuthRequired, ErrorHandler, PermissionRequired } from "../../lib/Middleware.js";
+            import { AuthRequest } from "../../lib/types/Auth.types.js";
+            import { Response } from "express";
+            import { DatabaseController } from "../../lib/DatabaseController.js";
+            
+            type RunPlusApplicationDTO = {
+                id: string;
+                ident: string;
+                name: string;
+                version: string;
+                content: string;
+                meta?: object;
+            }
+            
+            const app = 'runplus';
+            const permissionType = 'application';
+            const servicePermissions = [
+                new Permission(app, permissionType, 'read').toString(),
+                new Permission(app, permissionType, 'write').toString(),
+                new Permission(app, permissionType, 'create').toString(),
+                new Permission(app, permissionType, 'delete').toString(),
+            ];
+            
+            class RunPlusApplicationService extends Service {
+                table = "runplus_application";
+            
+                getServiceInfo() {
+                    return {
+                        permissions: servicePermissions
+                    };
+                }
+            
+                'GET /api/v1/runplus_application/permissions/:id?' = [
+                    AuthRequired,
+                    async (req: AuthRequest, res: Response) => {
+                        const filteredPermissions = filterPermissionsInternalData(req.session.__internal.permissions, [app, permissionType].join("."), req.params.id);
+                        return res.send({ permissions: filteredPermissions });
+                    },
+                    ErrorHandler
+                ];
+            
+                'GET /api/v1/runplus_application/:id' = [
+                    AuthRequired,
+                    PermissionRequired(app, permissionType, 'read', 'id'),
+                    async (req: AuthRequest, res: Response) => {
+                        const controller = new DatabaseController(req.session, this.table);
+                        const record = await controller.getRecordById<RunPlusApplicationDTO>(req.params.id);
+                        return res.send({ result: record });
+                    },
+                    ErrorHandler
+                ];
+            
+                'POST /api/v1/runplus_application' = [
+                    AuthRequired,
+                    PermissionRequired(app, permissionType, 'read'),
+                    async (req: AuthRequest, res: Response) => {
+                        const controller = new DatabaseController(req.session, this.table);
+                        const [records, count] = await controller.getAllRecords<RunPlusApplicationDTO>(req.body);
+                        return res.send({ result: { total: count, data: records } });
+                    },
+                    ErrorHandler
+                ];
+            
+                'POST /api/v1/runplus_application/create' = [
+                    AuthRequired,
+                    PermissionRequired(app, permissionType, 'create'),
+                    async (req: AuthRequest, res: Response) => {
+            
+                    },
+                    ErrorHandler
+                ];
+            }
+            
+            export default RunPlusApplicationService;"
+		],
+		"description": "Creates fresh react file structure"
+	}
+}
+2025-02-14T08:07:00.595Z: error Unexpected token / in JSON at position 3
+2025-02-14T08:07:26.761Z: Started host...
+2025-02-14T08:07:26.763Z: Received message {"title":"sleep promise","desc":"Method to behave like sleep","prefix":"sleepDevz","content":"function sleep(ms) {   return new Promise((resolve) => {     setTimeout(resolve, ms);   }); }"}
+2025-02-14T08:07:26.763Z: {
+  "Fresh React Structure": {
+    "prefix": [
+      "crud-service"
+    ],
+    "body": [
+      "import { Service } from "geonix";
+            import { Permission, filterPermissionsInternalData
+      } from "../../lib/Permission.js";
+            import { AuthRequired, ErrorHandler, PermissionRequired
+      } from "../../lib/Middleware.js";
+            import { AuthRequest
+      } from "../../lib/types/Auth.types.js";
+            import { Response
+      } from "express";
+            import { DatabaseController
+      } from "../../lib/DatabaseController.js";
+            
+            type RunPlusApplicationDTO = {
+                id: string;
+                ident: string;
+                name: string;
+                version: string;
+                content: string;
+                meta?: object;
+      }
+            
+            const app = 'runplus';
+            const permissionType = 'application';
+            const servicePermissions = [
+                new Permission(app, permissionType, 'read').toString(),
+                new Permission(app, permissionType, 'write').toString(),
+                new Permission(app, permissionType, 'create').toString(),
+                new Permission(app, permissionType, 'delete').toString(),
+      ];
+            
+            class RunPlusApplicationService extends Service {
+                table = "runplus_application";
+            
+                getServiceInfo() {
+                    return {
+                        permissions: servicePermissions
+          };
+        }
+            
+                'GET /api/v1/runplus_application/permissions/:id?' = [
+                    AuthRequired,
+                    async (req: AuthRequest, res: Response) => {
+                        const filteredPermissions = filterPermissionsInternalData(req.session.__internal.permissions,
+            [app, permissionType
+            ].join("."), req.params.id);
+                        return res.send({ permissions: filteredPermissions
+            });
+          },
+                    ErrorHandler
+        ];
+            
+                'GET /api/v1/runplus_application/:id' = [
+                    AuthRequired,
+                    PermissionRequired(app, permissionType, 'read', 'id'),
+                    async (req: AuthRequest, res: Response) => {
+                        const controller = new DatabaseController(req.session, this.table);
+                        const record = await controller.getRecordById<RunPlusApplicationDTO>(req.params.id);
+                        return res.send({ result: record
+            });
+          },
+                    ErrorHandler
+        ];
+            
+                'POST /api/v1/runplus_application' = [
+                    AuthRequired,
+                    PermissionRequired(app, permissionType, 'read'),
+                    async (req: AuthRequest, res: Response) => {
+                        const controller = new DatabaseController(req.session, this.table);
+                        const [records, count
+            ] = await controller.getAllRecords<RunPlusApplicationDTO>(req.body);
+                        return res.send({ result: { total: count, data: records
+              }
+            });
+          },
+                    ErrorHandler
+        ];
+            
+                'POST /api/v1/runplus_application/create' = [
+                    AuthRequired,
+                    PermissionRequired(app, permissionType, 'create'),
+                    async (req: AuthRequest, res: Response) => {},
+                    ErrorHandler
+        ];
+      }
+            
+            export default RunPlusApplicationService;"
+    ],
+    "description": "Creates fresh react file structure"
+  }
+}
+2025-02-14T08:07:26.763Z: error Unexpected token g in JSON at position 121
+2025-02-14T08:08:04.679Z: Started host...
+2025-02-14T08:08:04.680Z: Received message {"title":"sleep promise","desc":"Method to behave like sleep","prefix":"sleepDevz","content":"function sleep(ms) {   return new Promise((resolve) => {     setTimeout(resolve, ms);   }); }"}
+2025-02-14T08:08:04.680Z: {}
+2025-02-14T08:08:04.680Z: {}
+2025-02-14T08:08:04.680Z: {"sleep promise":{"prefix":["sleepDevz"],"body":["function sleep(ms) {   return new Promise((resolve) => {     setTimeout(resolve, ms);   }); }"],"description":"Method to behave like sleep"}}
